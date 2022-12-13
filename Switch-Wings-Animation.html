@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rich Stretanski</title>
+  <style>
+  /* ------------------The switches --------------------
+  ________________________________________________
+  |						|						|
+  |						|						|
+  |						|						|
+  |		switch2			|		switch1			|
+  |						|						|
+  |						|						|
+  |-----------------------------------------------|
+  |						|						|
+  |						|						|
+  |		switch3			|		switch4			|
+  |						|						|
+  |_______________________|_______________________|
+  */
+  .switch2 {
+    position: absolute;
+    left: 350px;
+    top: 320px;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  .switch3 {
+    position: absolute;
+    left: 350px;
+    top: 550px;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  .switch1 {
+    position: absolute;
+    left: 650px;
+    top: 320px;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  .switch4 {
+    position: absolute;
+    left: 650px;
+    top: 550px;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  /* Hide default HTML checkbox */
+  .switch1 input {display:none;}
+  .switch2 input {display:none;}
+  .switch3 input {display:none;}
+  .switch4 input {display:none;}
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: red;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  input:checked + .slider {
+    background-color: green;
+  }
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  .slider.round:before {
+    border-radius: 50%;
+  }
+  /* -------------------------------------- */
+  /* ------------------------Images----------------------------- */
+  #container2{
+    position: absolute;
+    width: 1080px;
+    height: 864px;
+    background-color: false;
+  }
+  #main_image {
+  	width: 1080px;
+  	height: 864px;
+  	position: absolute;
+  	left: 0%;
+  	top: 0%;
+  }
+  #overlay_image_bottom_left_in{
+  	width: 1080px;
+  	height: 864px;
+  	position: absolute;
+  	left: 312px;
+  	top: 495px;
+  	transition: all 1.5s linear;
+  }
+  #overlay_image_bottom_right_in{
+  	width: 1080px;
+  	height: 864px;
+  	position: absolute;
+  	left: 616px;
+  	top: 495px;
+  	transition: all 1.5s linear;
+  }
+  #overlay_image_top_left{
+  	width: 1080px;
+  	height: 864px;
+  	position: absolute;
+  	left: 312px;
+  	top: 307px;
+  	transition: all 1.5s linear;
+  }
+  #overlay_image_top_right{
+  	width: 1080px;
+  	height: 864px;
+  	position: absolute;
+  	left: 616px;
+  	top: 307px;
+  	transition: all 1.5s linear;
+  }
+  #overlay_image_bottom_left_out{
+  	width: 1080px;
+  	height: 864px;
+  	position: absolute;
+  	left: 175px;
+  	top: 495px;
+  	transition: all 1.5s linear;
+  }
+  #overlay_image_bottom_right_out{
+  	width: 1080px;
+  	height: 864px;
+  	position: absolute;
+  	left: 754px;
+  	top: 496px;
+  	transition: all 1.5s linear;
+  }
+  /*--------------------------------------------------------------*/
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/98.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="./images/gamertag.png">
+  <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+  <div id="desktop">
+	<div class="container2">
+			<div id="overlay_image_bottom_left_out"><img src="./images/DFC1 final camera 11-2-bottomleftout.png" </></div>
+			<div id="overlay_image_bottom_left_in"><img src="./images/DFC1 final camera 11-2-bottomleftin.png" </></div>
+			<div id="overlay_image_bottom_right_out"><img src="./images/DFC1 final camera 11-2-bottomrightout.png" </></div>
+			<div id="overlay_image_bottom_right_in"><img src="./images/DFC1 final camera 11-2-bottomrightin.png" </></div>
+			<div id="overlay_image_top_left"><img src="./images/DFC1 final camera 11-2-topleft.png" </></div>
+			<div id="overlay_image_top_right"><img src="./images/DFC1 final camera 11-2-topright.png" </></div>
+			<div id="main_image"><img src="./images/DFC1 top view wings in1Transparentbackground.png" </></div>
+	</div>
+
+	<label class="switch2">
+		<input type="checkbox" id="switch2" onclick="move2()" checked>
+		<div class="slider round"></div>
+	</label>
+	<label class="switch4">
+		<input type="checkbox" id="switch4" onclick="move45()" checked>
+		<div class="slider round"></div>
+	</label>
+	<label class="switch1">
+		<input type="checkbox" id="switch1" onclick="move1()" checked>
+		<div class="slider round"></div>
+	</label>
+	<label class="switch3">
+		<input type="checkbox" id="switch3" onclick="move36()" checked>
+		<div class="slider round"></div>
+	</label>
+</div>
+<script>
+	// move the top left wing
+	function move2() {
+		var input2 = document.getElementById("switch2");
+		var isChecked2 = switch2.checked;
+		isChecked2 = isChecked2 = (isChecked2)? "checked" : "not checked";
+		var elem2 = document.getElementById("overlay_image_top_left");
+		var pos2 = 454;
+		var pos22 = 313;
+		var id2 = setInterval(frame2, 5);
+
+		function frame2() {
+				if ((pos2 != 455) && (isChecked2 == "not checked")) {
+				pos2++;
+				elem2.style.left = pos2 + 'px';
+				}
+				else if ((pos22 != 312) && (isChecked2 == "checked")){
+				pos22--;
+				elem2.style.left = pos22 + 'px';
+				}
+				else {
+				clearInterval(id2);
+				}
+			}
+		}
+	//move the top right wing
+	function move1() {
+		var input1 = document.getElementById("switch1");
+		var isChecked1 = switch1.checked;
+		isChecked1 = isChecked1 = (isChecked1)? "checked" : "not checked";
+		var elem1 = document.getElementById("overlay_image_top_right");
+		var pos1 = 456;
+		var pos11 = 615;
+		var id1 = setInterval(frame1, 5);
+
+		function frame1() {
+				if ((pos1 != 455) && (isChecked1 == "not checked")) {
+				pos1--;
+				elem1.style.left = pos1 + 'px';
+				}
+				else if ((pos11 != 616) && (isChecked1 == "checked")){
+				pos11++;
+				elem1.style.left = pos11 + 'px';
+				}
+				else {
+				clearInterval(id1);
+				}
+			}
+		}
+	//calls move3 and move6 to that they run simultaneouly- fixes fast toggle bug
+	function move36() {
+	move6();
+	move3();
+	}
+	//move the bottom left wing
+	function move3() {
+		var input3 = document.getElementById("switch3");
+		var isChecked3 = switch3.checked;
+		isChecked3 = isChecked3 = (isChecked3)? "checked" : "not checked";
+		var elem33 = document.getElementById("overlay_image_bottom_left_in");
+		var pos3 = 454;
+		var pos33 = 313;
+		var id3 = setInterval(frame3, 5);
+
+		function frame3() {
+				if ((pos3 != 455) && (isChecked3 == "not checked")) {
+				pos3++;
+				elem33.style.left = pos3 + 'px';
+				}
+				else if ((pos33 != 312) && (isChecked3 == "checked")){
+				pos33--;
+				elem33.style.left = pos33 + 'px';
+				}
+				else {
+				clearInterval(id3);
+				}
+			}
+		}
+	function move6() {
+		var input6 = document.getElementById("switch3");
+		var isChecked6 = switch3.checked;
+		isChecked6 = isChecked6 = (isChecked6)? "checked" : "not checked";
+		var elem6 = document.getElementById("overlay_image_bottom_left_out");
+		var pos6 = 454;
+		var pos66 = 176;
+		var id6 = setInterval(frame6, 5);
+
+		function frame6() {
+				if ((pos6 != 455) && (isChecked6 == "not checked")) {
+				pos6++;
+				elem6.style.left = pos6 + 'px';
+				}
+				else if ((pos66 != 175) && (isChecked6 == "checked")){
+				pos66--;
+				elem6.style.left = pos66 + 'px';
+				}
+				else {
+				clearInterval(id6);
+				}
+			}
+		}
+	//calls move4 and move5 to that they run simultaneouly- fixes fast toggle bug
+	function move45() {
+	move5();
+	move4();
+	}
+	//move the bottom right wing
+	function move4() {
+		var input4 = document.getElementById("switch4");
+		var isChecked4 = switch4.checked;
+		isChecked4 = isChecked4 = (isChecked4)? "checked" : "not checked";
+		//alert ("The checkBox is " + isChecked4);
+		var elem44 = document.getElementById("overlay_image_bottom_right_in");
+		//position at start, later moved in
+		var pos4 = 456;
+		//closed position of overlay_image_bottom_right_in, later moved out
+		var pos44 = 615;
+		var id4 = setInterval(frame4, 5);
+		function frame4() {
+				if ((pos4 != 455) && (isChecked4 == "not checked")) {
+				pos4--;
+				elem44.style.left = pos4 + 'px';
+				}
+				else if ((pos44 < 616) && (isChecked4 == "checked")){
+					pos44++;
+					elem44.style.left = pos44 + 'px';
+				}
+				else {
+				clearInterval(id4);
+				}
+			}
+		}
+
+	function move5() {
+		var input5 = document.getElementById("switch4");
+		var isChecked5 = switch4.checked;
+		isChecked5 = isChecked5 = (isChecked5)? "checked" : "not checked";
+		//alert ("The checkBox is " + isChecked4);
+		var elem5 = document.getElementById("overlay_image_bottom_right_out");
+		//position at start, later moved in
+		var pos5 = 456;
+		//closed position of out-segment in, later moved out
+		var pos55 = 753;
+		var id5 = setInterval(frame5, 5);
+		function frame5() {
+				if ((pos5 != 455) && (isChecked5 == "not checked")) {
+				pos5--;
+				elem5.style.left = pos5 + 'px';
+				}
+				else if ((pos55 < 754) && (isChecked5 == "checked")){
+					pos55++;
+					elem5.style.left = pos55 + 'px';
+				}
+				else {
+				clearInterval(id5);
+				}
+			}
+		}
+</script>
+<div id="toolbar">
+  <div class="toolbar-start-menu">
+    <button onclick="background()" value="NO" id="start-button" class="start-button">
+      Start
+    </button>
+  </div>
+  <div class="toolbar-separator"></div>
+  <div class="toolbar-right">
+    <div class="time"><span class="hour"></span>:<span class="minutes"></span> AM</div>
+  </div>
+</div>
+<!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/draggabilly/2.2.0/draggabilly.pkgd.min.js'></script><script  src="./script.js"></script>
+</body>
+</html>
